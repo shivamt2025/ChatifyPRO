@@ -1,0 +1,24 @@
+services:
+  backend:
+    build: ./
+    ports:
+      - "5000:5000" 
+    networks:
+      - mern1
+    environment:
+      PORT: 5000
+      MONGO_DB_URI: mongodb+srv://shivamtewari2002:GjfRFMnYOppDy6Ho@cluster0.1alvf4p.mongodb.net/DnSChat-db?retryWrites=true&w=majority&appName=Cluster0
+      JWT_SECRET: ABTlMNVrf/Lc7x6IH7bGxJOVeRaF3p27t+WB0cGLGxc=
+      NODE_ENV: development
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"  
+    networks:
+      - mern1
+    
+
+networks:
+  mern1:
+    driver: bridge
